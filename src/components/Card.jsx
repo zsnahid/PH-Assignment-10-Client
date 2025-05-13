@@ -18,41 +18,34 @@ import { Link } from "react-router-dom";
 // }
 
 export function ProductCard({ equipment }) {
-  // console.log(equipment);
-  const { category, _id, image, item, price } = equipment;
-  const takaSymbol = "৳";
+  const { _id, image, item } = equipment;
 
   return (
-    <Fade
-      delay={200} // Wait 200ms before starting
-    >
-      <div className="border dark:border-black h-full w-full bg-blue-gray-50/50 dark:bg-gray-800 grid grid-rows-[auto,1fr]">
-        <img src={image} className="w-full h-80 object-cover object-center" />
-        <div className="p-3 flex flex-col">
-          {/* texts */}
-          <div className="flex-grow">
-            <div className="flex justify-between items-center">
-              <small className="text-red-900 dark:text-red-500 uppercase font-semibold">
-                {category}
-              </small>
-              <p className="font-medium">
-                {takaSymbol}
-                {price}
-              </p>
-            </div>
-            <p className="my-3 font-semibold"> {item} </p>
+    <Fade direction="up" delay={200} triggerOnce>
+      <div className="group">
+        <div className="relative border border-gray-200 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900/20 transition-colors">
+          <div className="h-80 overflow-hidden">
+            <img
+              src={image}
+              className="object-cover h-full w-full group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
-
-          <div className="flex justify-center">
-            <Link to={`/details/${_id}`}>
-              <Button
-                variant="outlined"
-                size="sm"
-                className="rounded-none block mx-auto dark:border-white/90 dark:text-white/90"
-              >
-                View Details
-              </Button>
-            </Link>
+          <div className="p-3">
+            <p className="my-3 font-semibold text-gray-800 dark:text-gray-200">
+              {" "}
+              {item}{" "}
+            </p>
+            <div className="flex justify-center">
+              <Link to={`/details/${_id}`}>
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  className="rounded-none border-red-600 text-red-600 hover:bg-red-50 dark:border-red-500 dark:text-red-500 dark:hover:bg-red-900/20"
+                >
+                  View Details
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

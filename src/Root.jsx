@@ -1,17 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import FooterWithSocialLinks from "./components/Footer";
 import StickyNavbar from "./components/Navbar";
+
 export default function Root() {
+  const location = useLocation();
+  const isDashboard = location.pathname.startsWith("/dashboard");
+
   return (
     <div>
-      <StickyNavbar />
+      {!isDashboard && <StickyNavbar />}
       <Outlet />
-      <FooterWithSocialLinks />
-      <ToastContainer
-        position="top-center"
-        hideProgressBar
-      />
+      {!isDashboard && <FooterWithSocialLinks />}
+      <ToastContainer position="top-center" hideProgressBar />
     </div>
   );
 }

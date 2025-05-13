@@ -8,40 +8,58 @@ export default function DashboardOverview() {
 
   return (
     <div className="grid gap-4">
-      <div className="p-4 border rounded-lg">
-        <Typography variant="h6" color="blue-gray" className="mb-2">
+      <div className="p-4 border-red-100 dark:border-red-900/20 border rounded-lg bg-red-50/50 dark:bg-red-900/10">
+        <Typography
+          variant="h6"
+          className="mb-2 text-gray-800 dark:text-gray-200"
+        >
           Welcome, {user?.displayName || "User"}!
         </Typography>
-        <Typography color="gray">Email: {user?.email}</Typography>
+        <Typography className="text-gray-700 dark:text-gray-300">
+          Email: {user?.email}
+        </Typography>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <Link to="my-equipments">
-          <Card className="p-4 hover:shadow-lg transition-all">
-            <Typography variant="h6" color="blue-gray" className="mb-2">
+          <Card className="p-4 hover:shadow-lg transition-all border border-gray-200 dark:border-gray-800">
+            <Typography
+              variant="h6"
+              className="mb-2 text-gray-800 dark:text-gray-200"
+            >
               My Equipment
             </Typography>
-            <Typography color="gray">View and manage your equipment</Typography>
+            <Typography className="text-gray-600 dark:text-gray-400">
+              View and manage your equipment
+            </Typography>
           </Card>
         </Link>
 
         <Link to="add-equipment">
-          <Card className="p-4 hover:shadow-lg transition-all">
-            <Typography variant="h6" color="blue-gray" className="mb-2">
+          <Card className="p-4 hover:shadow-lg transition-all border border-gray-200 dark:border-gray-800">
+            <Typography
+              variant="h6"
+              className="mb-2 text-gray-800 dark:text-gray-200"
+            >
               Add Equipment
             </Typography>
-            <Typography color="gray">
+            <Typography className="text-gray-600 dark:text-gray-400">
               Add new equipment to the system
             </Typography>
           </Card>
         </Link>
 
         <Link to="all-equipments">
-          <Card className="p-4 hover:shadow-lg transition-all">
-            <Typography variant="h6" color="blue-gray" className="mb-2">
+          <Card className="p-4 hover:shadow-lg transition-all border border-gray-200 dark:border-gray-800">
+            <Typography
+              variant="h6"
+              className="mb-2 text-gray-800 dark:text-gray-200"
+            >
               All Equipment
             </Typography>
-            <Typography color="gray">Browse all available equipment</Typography>
+            <Typography className="text-gray-600 dark:text-gray-400">
+              Browse all available equipment
+            </Typography>
           </Card>
         </Link>
       </div>

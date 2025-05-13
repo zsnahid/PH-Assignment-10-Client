@@ -59,37 +59,22 @@ export default function Deal() {
               fraction={0.5}
               triggerOnce
             >
-              <img
-                src={image}
-                className="h-96 w-auto object-cover"
-              />
+              <img src={image} className="h-96 w-auto object-cover" />
             </Slide>
             <div className="flex flex-col justify-between gap-5">
               <div>
-                <Typography
-                  variant="h6"
-                  className="tracking-widest"
-                >
+                <Typography variant="h6" className="tracking-widest">
                   {category}
                 </Typography>
-                <Typography
-                  variant="h3"
-                  className="my-3"
-                >
+                <Typography variant="h3" className="my-3">
                   {item}
                 </Typography>
                 <div className="flex items-center gap-3">
-                  <Typography
-                    variant="h5"
-                    className="text-red-900"
-                  >
+                  <Typography variant="h5" className="text-red-900">
                     {"৳"}
                     {price}
                   </Typography>
-                  <Typography
-                    variant="small"
-                    className="line-through"
-                  >
+                  <Typography variant="small" className="line-through">
                     {"৳"}
                     17000
                   </Typography>
@@ -115,16 +100,10 @@ export default function Deal() {
         {/* EID PROMO */}
         <div className="lg:col-span-4 h-96 bg-gray-200 relative overflow-hidden">
           <div className="p-10">
-            <Typography
-              variant="h6"
-              className="tracking-widest text-red-900"
-            >
+            <Typography variant="h6" className="tracking-widest text-red-900">
               PROMO
             </Typography>
-            <Typography
-              variant="h3"
-              className="my-5 dark:text-black"
-            >
+            <Typography variant="h3" className="my-5 dark:text-black">
               EID DISCOUNT
             </Typography>
             <Typography className="tracking-widest dark:text-black">

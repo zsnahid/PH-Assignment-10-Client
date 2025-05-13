@@ -9,16 +9,17 @@ import {
   MenuItem,
   MenuList,
   Navbar,
-  Switch,
   Typography,
 } from "@material-tailwind/react";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import { useTheme } from "../contexts/ThemeContext.jsx";
 
 export default function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const { darkMode, toggleDarkMode } = useTheme();
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -36,151 +37,99 @@ export default function StickyNavbar() {
       });
   };
 
-  useEffect(() => {
-    const themeToggleBtn = document.getElementById("theme-toggle-btn");
-
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      themeToggleBtn.checked = true;
-    }
-  }, []);
-
-  const handleThemeToggle = () => {
-    let savedTheme = localStorage.getItem("theme");
-
-    const currentTheme = document.documentElement.classList;
-
-    if (!savedTheme || savedTheme === "light") {
-      localStorage.theme = "dark";
-    } else if (savedTheme === "dark") {
-      localStorage.theme = "light";
-    }
-
-    savedTheme = localStorage.getItem("theme");
-    const isDark = currentTheme.contains("dark");
-
-    if (isDark) {
-      currentTheme.remove("dark");
-      currentTheme.add(savedTheme);
-    } else {
-      currentTheme.remove("light");
-      currentTheme.add(savedTheme);
-    }
-  };
-
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
-        className="px-3 py-1 font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 dark:text-white/90"
+        className="px-3 py-1 font-semibold text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
       >
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "text-red-600 dark:text-red-400" : ""
+          }
         >
           Home
         </NavLink>
       </Typography>
-      {!user && (
-        <Typography
-          as="li"
-          variant="small"
-          color="blue-gray"
-          className="px-3 py-1 font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 dark:text-white/90"
+      <Typography
+        as="li"
+        variant="small"
+        className="px-3 py-1 font-semibold text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
+      >
+        <NavLink
+          to="/all-equipments"
+          className={({ isActive }) =>
+            isActive ? "text-red-600 dark:text-red-400" : ""
+          }
         >
-          <NavLink
-            to="/all-equipments"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            All Equipments
-          </NavLink>
-        </Typography>
-      )}
+          All Equipments
+        </NavLink>
+      </Typography>
     </ul>
   );
 
   return (
-    <Navbar className="dark:bg-black/90 dark:text-white/90 sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4 border-none">
-      <div className="flex items-center justify-between text-blue-gray-900 dark:text-white/90">
+    <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 shadow-md dark:bg-gray-900 dark:text-white lg:px-8 lg:py-4">
+      <div className="flex items-center justify-between text-gray-900">
         <Typography
-          variant="h5"
-          className="mr-4 cursor-pointer py-1.5 font-bold uppercase"
+          as={Link}
+          to="/"
+          className="mr-4 cursor-pointer py-1.5 font-bold text-red-600 dark:text-red-400"
         >
-          <Link to="/">
-            <span className="text-red-900">Equi</span>Sports
-          </Link>
+          Sports Gear Hub
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <div className="flex items-center gap-3">
-            <SunIcon
-              id="sun-icon"
-              className="size-5 text-red-900 dark:text-white/90"
-            />
-            <Switch id="theme-toggle-btn" onClick={handleThemeToggle} />
-            <MoonIcon
-              id="moon-icon"
-              className="size-4 text-black dark:text-red-900"
-            />
-          </div>
           <div className="flex items-center gap-x-1">
+            <Button
+              onClick={toggleDarkMode}
+              variant="text"
+              className="flex items-center gap-2 text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
+            >
+              {darkMode ? (
+                <SunIcon className="h-5 w-5" />
+              ) : (
+                <MoonIcon className="h-5 w-5" />
+              )}
+            </Button>
             {user ? (
               <Menu>
                 <MenuHandler>
                   <Avatar
-                    src={user.photoURL}
-                    alt="profile picture"
+                    variant="circular"
                     size="sm"
+                    alt="avatar"
                     className="cursor-pointer"
+                    src={user?.photoURL}
                   />
                 </MenuHandler>
-                <MenuList className="p-1">
-                  <MenuItem className="flex items-center gap-2 rounded hover:bg-red-50/80">
-                    <Typography variant="small" className="font-medium">
-                      {user.displayName}
-                    </Typography>
-                  </MenuItem>
+                <MenuList className="dark:bg-gray-800">
                   <MenuItem
-                    className="flex items-center gap-2 rounded hover:bg-red-50/80"
                     onClick={() => navigate("/dashboard")}
+                    className="flex items-center gap-2 text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
                   >
-                    <Typography variant="small" className="font-normal">
-                      Dashboard
-                    </Typography>
+                    Dashboard
                   </MenuItem>
                   <MenuItem
-                    className="flex items-center gap-2 rounded hover:bg-red-50/80"
                     onClick={handleLogOut}
+                    className="flex items-center gap-2 text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
                   >
-                    <Typography variant="small" className="font-normal">
-                      Sign Out
-                    </Typography>
+                    Sign Out
                   </MenuItem>
                 </MenuList>
               </Menu>
             ) : (
-              <Link to="/login">
-                <Button
-                  variant="outlined"
-                  size="sm"
-                  className="hidden lg:inline-block rounded-none dark:border-white/90 dark:text-white/90"
-                >
-                  <span>Log In</span>
-                </Button>
-              </Link>
-            )}
-            {!user && (
-              <Link to="/register">
-                <Button
-                  variant="filled"
-                  size="sm"
-                  className="hidden lg:inline-block rounded-none bg-red-900"
-                >
-                  <span>Register</span>
-                </Button>
-              </Link>
+              <Button
+                variant="gradient"
+                size="sm"
+                color="red"
+                className="hidden lg:inline-block"
+                onClick={() => navigate("/login")}
+              >
+                <span>Sign in</span>
+              </Button>
             )}
           </div>
           <IconButton
@@ -224,39 +173,17 @@ export default function StickyNavbar() {
       </div>
       <Collapse open={openNav}>
         {navList}
-        {user ? (
+        {!user && (
           <Button
-            fullWidth
-            variant="outlined"
+            variant="gradient"
             size="sm"
-            className="rounded-none dark:border-white/90 dark:text-white/90"
-            onClick={handleLogOut}
+            color="red"
+            fullWidth
+            className="mb-2"
+            onClick={() => navigate("/login")}
           >
-            Sign Out
+            <span>Sign in</span>
           </Button>
-        ) : (
-          <div className="flex items-center gap-x-1">
-            <Link to="/login" className="w-full">
-              <Button
-                fullWidth
-                variant="outlined"
-                size="sm"
-                className="rounded-none dark:border-white/90 dark:text-white/90"
-              >
-                <span>Log In</span>
-              </Button>
-            </Link>
-            <Link to="/register" className="w-full">
-              <Button
-                fullWidth
-                variant="filled"
-                size="sm"
-                className="bg-red-900 rounded-none border border-red-900"
-              >
-                <span>Register</span>
-              </Button>
-            </Link>
-          </div>
         )}
       </Collapse>
     </Navbar>

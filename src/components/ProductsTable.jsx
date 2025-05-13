@@ -2,48 +2,71 @@
 import { Card, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-const TABLE_HEAD = ["Name", "", "Category", "Price", ""];
-
 export function ProductsTable({ equipments }) {
-  // console.log(equipments);
   return (
-    <Card className="h-full w-full rounded-none shadow-none">
-      <table className="w-full table-fixed text-left">
+    <Card className="h-full w-full overflow-scroll rounded-none border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+      <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
-            {TABLE_HEAD.map((head, index) => (
-              <th
-                key={index}
-                className="bg-black/90 dark:bg-red-900 p-4"
+            <th
+              colSpan="2"
+              className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-4"
+            >
+              <Typography
+                variant="small"
+                className="font-semibold leading-none text-gray-700 dark:text-gray-300"
               >
-                <Typography
-                  variant="paragraph"
-                  color="white"
-                  className="font-semibold leading-none opacity-70"
-                >
-                  {head}
-                </Typography>
-              </th>
-            ))}
+                Name
+              </Typography>
+            </th>
+            <th className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-4">
+              <Typography
+                variant="small"
+                className="font-semibold leading-none text-gray-700 dark:text-gray-300"
+              >
+                Category
+              </Typography>
+            </th>
+            <th className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-4">
+              <Typography
+                variant="small"
+                className="font-semibold leading-none text-gray-700 dark:text-gray-300"
+              >
+                Price
+              </Typography>
+            </th>
+            <th className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-4">
+              <Typography
+                variant="small"
+                className="font-semibold leading-none text-gray-700 dark:text-gray-300"
+              >
+                Action
+              </Typography>
+            </th>
           </tr>
         </thead>
         <tbody>
-          {equipments.map(({ _id, item, category, price }, index) => {
+          {equipments.map(({ _id, image, item, category, price }, index) => {
             const isLast = index === equipments.length - 1;
             const classes = isLast
               ? "p-4"
-              : "p-4 border-b border-blue-gray-100 dark:border-white/20";
+              : "p-4 border-b border-gray-200 dark:border-gray-800";
 
             return (
-              <tr key={_id} className="dark:bg-black/80">
-                <td
-                  className={classes}
-                  colSpan="2"
-                >
+              <tr key={_id}>
+                <td className={classes}>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={image}
+                      alt={item}
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
+                  </div>
+                </td>
+                <td className={classes}>
                   <Typography
                     variant="small"
-                    color="blue-gray"
-                    className="font-normal dark:text-white/90"
+                    className="font-normal text-gray-700 dark:text-gray-300"
                   >
                     {item}
                   </Typography>
@@ -51,8 +74,7 @@ export function ProductsTable({ equipments }) {
                 <td className={classes}>
                   <Typography
                     variant="small"
-                    color="blue-gray"
-                    className="font-normal dark:text-white/90"
+                    className="font-normal text-gray-700 dark:text-gray-300"
                   >
                     {category}
                   </Typography>
@@ -60,8 +82,7 @@ export function ProductsTable({ equipments }) {
                 <td className={classes}>
                   <Typography
                     variant="small"
-                    color="blue-gray"
-                    className="font-normal dark:text-white/90"
+                    className="font-normal text-gray-700 dark:text-gray-300"
                   >
                     {price}
                   </Typography>
@@ -70,8 +91,7 @@ export function ProductsTable({ equipments }) {
                   <Link to={`/details/${_id}`}>
                     <Typography
                       variant="small"
-                      color="blue-gray"
-                      className="font-medium underline dark:text-white/90"
+                      className="font-medium text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-400 underline"
                     >
                       View Details
                     </Typography>

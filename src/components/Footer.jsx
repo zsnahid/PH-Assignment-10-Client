@@ -20,18 +20,17 @@ const currentYear = new Date().getFullYear();
 export default function FooterWithSocialLinks() {
   return (
     <footer className="relative w-full">
-      <div className="mx-auto w-full bg-black/90 px-8 pt-16">
+      <div className="mx-auto w-full bg-gray-900 dark:bg-gray-950 px-8 pt-16">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <Typography variant="h3" className="mb-6" color="white">
-            <span className="text-red-900">Sportify</span>
+          <Typography variant="h3" className="mb-6 text-gray-50">
+            <span className="text-red-500">Sportify</span>
           </Typography>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <Typography
                   variant="small"
-                  color="white"
-                  className="mb-3 font-medium opacity-80"
+                  className="mb-3 font-medium text-gray-200"
                 >
                   {title}
                 </Typography>
@@ -40,8 +39,7 @@ export default function FooterWithSocialLinks() {
                     <Typography
                       as="a"
                       href="#"
-                      color="white"
-                      className="py-1.5 font-normal"
+                      className="py-1.5 font-normal text-gray-400 hover:text-red-400 transition-colors"
                     >
                       {link}
                     </Typography>
@@ -51,18 +49,18 @@ export default function FooterWithSocialLinks() {
             ))}
           </div>
         </div>
-        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-red-900 py-4 md:flex-row md:justify-between">
+        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-red-900/20 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-100 md:mb-0"
+            className="mb-4 text-center font-normal text-gray-300 md:mb-0"
           >
             &copy; {currentYear} Sportify. All Rights Reserved.
           </Typography>
-          <div className="flex gap-4 text-white sm:justify-center">
+          <div className="flex gap-4 text-gray-300 sm:justify-center">
             <Typography
               as="a"
               href="#"
-              className="opacity-80 transition-opacity hover:opacity-100"
+              className="opacity-80 transition-opacity hover:opacity-100 hover:text-red-400"
             >
               <svg
                 className="h-5 w-5"
@@ -80,7 +78,7 @@ export default function FooterWithSocialLinks() {
             <Typography
               as="a"
               href="#"
-              className="opacity-80 transition-opacity hover:opacity-100"
+              className="opacity-80 transition-opacity hover:opacity-100 hover:text-red-400"
             >
               <svg
                 className="h-5 w-5"
@@ -98,7 +96,7 @@ export default function FooterWithSocialLinks() {
             <Typography
               as="a"
               href="#"
-              className="opacity-80 transition-opacity hover:opacity-100"
+              className="opacity-80 transition-opacity hover:opacity-100 hover:text-red-400"
             >
               <svg
                 className="h-5 w-5"

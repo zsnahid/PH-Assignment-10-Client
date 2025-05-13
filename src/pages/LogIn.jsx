@@ -12,10 +12,8 @@ export default function LogIn() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(email, password);
     logIn(email, password)
       .then((userCredential) => {
-        // console.log(userCredential.user?.displayName);
         Swal.fire({
           icon: "success",
           text: `Logged in as ${userCredential.user?.displayName}`,
@@ -24,11 +22,6 @@ export default function LogIn() {
       })
       .catch((error) => {
         console.error(error.message);
-        // Swal.fire({
-        //   icon: "error",
-        //   title: "Error",
-        //   text: "Please provide valid email address and password",
-        // });
         toast.error("Please provide valid email address and password");
       });
   };
@@ -46,10 +39,7 @@ export default function LogIn() {
 
   return (
     <div className="flex justify-center items-center min-h-[50vh]">
-      <Card
-        color="transparent"
-        shadow={false}
-      >
+      <Card color="transparent" shadow={false}>
         <form
           className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
           onSubmit={handleLogIn}
@@ -57,8 +47,7 @@ export default function LogIn() {
           <div className="mb-1 flex flex-col gap-6">
             <Typography
               variant="h6"
-              color="blue-gray"
-              className="-mb-3 dark:text-white/90"
+              className="text-gray-800 dark:text-gray-200"
             >
               Your Email
             </Typography>
@@ -66,15 +55,14 @@ export default function LogIn() {
               size="lg"
               placeholder="name@mail.com"
               name="email"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 rounded-none"
+              className="!border-gray-300 focus:!border-red-500 rounded-none"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
             />
             <Typography
               variant="h6"
-              color="blue-gray"
-              className="-mb-3 dark:text-white/90"
+              className="text-gray-800 dark:text-gray-200"
             >
               Password
             </Typography>
@@ -83,7 +71,7 @@ export default function LogIn() {
               size="lg"
               placeholder="********"
               name="password"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 rounded-none"
+              className="!border-gray-300 focus:!border-red-500 rounded-none"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -91,22 +79,21 @@ export default function LogIn() {
           </div>
 
           <Button
-            className="mt-6 rounded-none bg-red-900"
+            className="mt-6 rounded-none bg-red-600 hover:bg-red-700"
             fullWidth
             type="submit"
-            value="Log In"
           >
             Log In
           </Button>
-          <div className="my-6 flex items-center before:content[''] before:flex-1 before:border before:border-blue-gray-100 after:content[''] after:flex-1 after:border after:border-blue-gray-100">
-            <span className="mx-3 text-blue-gray-500">or</span>
+          <div className="my-6 flex items-center before:flex-1 before:border-t before:border-gray-300 after:flex-1 after:border-t after:border-gray-300">
+            <span className="mx-3 text-gray-500">or</span>
           </div>
           <Button
             size="md"
             variant="outlined"
-            color="blue-gray"
+            color="red"
             fullWidth
-            className="flex items-center justify-center gap-3 rounded-none dark:text-blue-gray-500"
+            className="flex items-center justify-center gap-3 rounded-none border-red-500 text-red-500 hover:bg-red-50"
             onClick={handleGoogleSignIn}
           >
             <img
@@ -116,14 +103,11 @@ export default function LogIn() {
             />
             Continue with Google
           </Button>
-          <Typography
-            color="gray"
-            className="mt-4 text-center font-normal dark:text-gray-500"
-          >
+          <Typography className="mt-4 text-center font-normal text-gray-600">
             Don&apos;t have and account?{" "}
             <a
               href="/register"
-              className="font-medium text-gray-900 dark:text-gray-400"
+              className="font-medium text-red-600 hover:text-red-700"
             >
               Register
             </a>
