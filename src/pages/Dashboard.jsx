@@ -1,12 +1,15 @@
 import {
   HomeIcon,
+  MoonIcon,
   PlusCircleIcon,
   RectangleGroupIcon,
   Square3Stack3DIcon,
+  SunIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import {
   Avatar,
+  Button,
   Card,
   List,
   ListItem,
@@ -20,11 +23,13 @@ import {
 import { useContext } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import { useTheme } from "../contexts/ThemeContext.jsx";
 
 export default function Dashboard() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
+  const { darkMode, toggleDarkMode } = useTheme();
 
   const isActive = (path) => {
     return location.pathname === path ? "bg-red-900/20 text-red-200" : "";
@@ -103,6 +108,18 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col">
         {/* Header */}
         <div className="bg-gray-900 dark:bg-gray-950 p-4 flex justify-end items-center gap-4">
+          <Button
+            onClick={toggleDarkMode}
+            variant="text"
+            className="flex items-center gap-2 text-gray-200 hover:text-red-400"
+            size="sm"
+          >
+            {darkMode ? (
+              <SunIcon className="h-5 w-5" />
+            ) : (
+              <MoonIcon className="h-5 w-5" />
+            )}
+          </Button>
           <Menu>
             <MenuHandler>
               <Avatar
