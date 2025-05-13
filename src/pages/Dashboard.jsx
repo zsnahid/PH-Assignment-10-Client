@@ -36,15 +36,16 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Sidebar */}
-      <Card className="h-screen w-full lg:w-[300px] p-4 rounded-none shadow-none bg-gray-900 dark:bg-gray-950 text-gray-50">
+    <div className="h-screen flex overflow-hidden">
+      {/* Sidebar - Fixed height with independent scroll */}
+      <Card className="w-full lg:w-[300px] h-screen rounded-none shadow-none bg-gray-900 dark:bg-gray-950 text-gray-50 flex flex-col">
         <div className="p-4 border-b border-gray-700">
           <Typography variant="h5" className="text-gray-50">
             Dashboard Menu
           </Typography>
         </div>
-        <List className="text-gray-100">
+
+        <List className="text-gray-100 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-800 hover:scrollbar-thumb-gray-600">
           <Link to="/">
             <ListItem className="hover:bg-red-900/20 hover:text-red-200 transition-colors">
               <ListItemPrefix>
@@ -104,10 +105,10 @@ export default function Dashboard() {
         </List>
       </Card>
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <div className="bg-gray-900 dark:bg-gray-950 p-4 flex justify-end items-center gap-4">
+      {/* Main Content - Fixed height with independent scroll */}
+      <div className="flex-1 flex flex-col h-screen overflow-hidden">
+        {/* Fixed Header */}
+        <div className="bg-gray-900 dark:bg-gray-950 p-4 flex justify-end items-center gap-4 border-b border-gray-800">
           <Button
             onClick={toggleDarkMode}
             variant="text"
@@ -129,14 +130,17 @@ export default function Dashboard() {
                 className="cursor-pointer"
               />
             </MenuHandler>
-            <MenuList className="p-1">
-              <MenuItem className="flex items-center gap-2 rounded hover:bg-red-50 hover:text-red-900">
-                <Typography variant="small" className="font-medium">
+            <MenuList className="p-1 dark:bg-gray-900">
+              <MenuItem className="flex items-center gap-2 rounded hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-900 dark:hover:text-red-200">
+                <Typography
+                  variant="small"
+                  className="font-medium dark:text-gray-200"
+                >
                   {user?.displayName}
                 </Typography>
               </MenuItem>
               <MenuItem
-                className="flex items-center gap-2 rounded hover:bg-red-50 hover:text-red-900"
+                className="flex items-center gap-2 rounded hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-900 dark:hover:text-red-200"
                 onClick={() => {
                   logOut()
                     .then(() => {
@@ -147,7 +151,10 @@ export default function Dashboard() {
                     });
                 }}
               >
-                <Typography variant="small" className="font-normal">
+                <Typography
+                  variant="small"
+                  className="font-normal dark:text-gray-200"
+                >
                   Sign Out
                 </Typography>
               </MenuItem>
@@ -155,9 +162,11 @@ export default function Dashboard() {
           </Menu>
         </div>
 
-        {/* Content Area */}
-        <div className="flex-1 p-6 overflow-auto bg-gray-50 dark:bg-gray-950 shadow-none rounded-none">
-          <Outlet />
+        {/* Scrollable Content Area */}
+        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-950 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-100 dark:scrollbar-track-gray-800 hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-600">
+          <div className="p-6">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

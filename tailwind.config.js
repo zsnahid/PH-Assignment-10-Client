@@ -1,4 +1,6 @@
 import withMT from "@material-tailwind/react/utils/withMT";
+import tailwindScrollbar from "tailwind-scrollbar";
+
 /** @type {import('tailwindcss').Config} */
 export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -23,7 +25,6 @@ export default withMT({
           900: "#7F1D1D", // Darkest red for borders/text
           950: "#450A0A", // Ultra dark red for dark mode
         },
-        // Neutral colors for text and backgrounds
         gray: {
           50: "#FAFAFA", // Light background
           100: "#F4F4F5", // Light hover states
@@ -36,5 +37,5 @@ export default withMT({
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindScrollbar({ nocompatible: true })],
 });
