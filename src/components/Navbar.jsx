@@ -4,19 +4,22 @@ import {
   Button,
   Collapse,
   IconButton,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
   Navbar,
   Switch,
-  Tooltip,
   Typography,
 } from "@material-tailwind/react";
 import React, { useContext, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
   const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     window.addEventListener(
@@ -47,8 +50,6 @@ export default function StickyNavbar() {
 
     const currentTheme = document.documentElement.classList;
 
-    // currentTheme.toggle("dark");
-
     if (!savedTheme || savedTheme === "light") {
       localStorage.theme = "dark";
     } else if (savedTheme === "dark") {
@@ -57,7 +58,6 @@ export default function StickyNavbar() {
 
     savedTheme = localStorage.getItem("theme");
     const isDark = currentTheme.contains("dark");
-    // console.log(isDark, savedTheme);
 
     if (isDark) {
       currentTheme.remove("dark");
@@ -83,45 +83,21 @@ export default function StickyNavbar() {
           Home
         </NavLink>
       </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="px-3 py-1 font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 dark:text-white/90"
-      >
-        <NavLink
-          to="/all-equipments"
-          className={({ isActive }) => (isActive ? "active" : "")}
+      {!user && (
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="px-3 py-1 font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 dark:text-white/90"
         >
-          All Equipments
-        </NavLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="px-3 py-1 font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 dark:text-white/90"
-      >
-        <NavLink
-          to="/add-equipment"
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Add Equipment
-        </NavLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="px-3 py-1 font-semibold hover:bg-red-50 dark:hover:bg-red-900/30 dark:text-white/90"
-      >
-        <NavLink
-          to={`/my-equipments/filter?email=${encodeURIComponent(user?.email)}`}
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          My Equipments
-        </NavLink>
-      </Typography>
+          <NavLink
+            to="/all-equipments"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            All Equipments
+          </NavLink>
+        </Typography>
+      )}
     </ul>
   );
 
@@ -143,10 +119,7 @@ export default function StickyNavbar() {
               id="sun-icon"
               className="size-5 text-red-900 dark:text-white/90"
             />
-            <Switch
-              id="theme-toggle-btn"
-              onClick={handleThemeToggle}
-            />
+            <Switch id="theme-toggle-btn" onClick={handleThemeToggle} />
             <MoonIcon
               id="moon-icon"
               className="size-4 text-black dark:text-red-900"
@@ -154,16 +127,39 @@ export default function StickyNavbar() {
           </div>
           <div className="flex items-center gap-x-1">
             {user ? (
-              <Tooltip
-                content={user.displayName}
-                placement="bottom"
-              >
-                <Avatar
-                  src={user.photoURL}
-                  className="mr-3"
-                  size="sm"
-                />
-              </Tooltip>
+              <Menu>
+                <MenuHandler>
+                  <Avatar
+                    src={user.photoURL}
+                    alt="profile picture"
+                    size="sm"
+                    className="cursor-pointer"
+                  />
+                </MenuHandler>
+                <MenuList className="p-1">
+                  <MenuItem className="flex items-center gap-2 rounded hover:bg-red-50/80">
+                    <Typography variant="small" className="font-medium">
+                      {user.displayName}
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    className="flex items-center gap-2 rounded hover:bg-red-50/80"
+                    onClick={() => navigate("/dashboard")}
+                  >
+                    <Typography variant="small" className="font-normal">
+                      Dashboard
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem
+                    className="flex items-center gap-2 rounded hover:bg-red-50/80"
+                    onClick={handleLogOut}
+                  >
+                    <Typography variant="small" className="font-normal">
+                      Sign Out
+                    </Typography>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             ) : (
               <Link to="/login">
                 <Button
@@ -175,16 +171,7 @@ export default function StickyNavbar() {
                 </Button>
               </Link>
             )}
-            {user ? (
-              <Button
-                variant="outlined"
-                size="sm"
-                className="hidden lg:inline-block rounded-none dark:border-white/90 dark:text-white/90"
-                onClick={handleLogOut}
-              >
-                <span>Log Out</span>
-              </Button>
-            ) : (
+            {!user && (
               <Link to="/register">
                 <Button
                   variant="filled"
@@ -245,26 +232,30 @@ export default function StickyNavbar() {
             className="rounded-none dark:border-white/90 dark:text-white/90"
             onClick={handleLogOut}
           >
-            Log Out
+            Sign Out
           </Button>
         ) : (
           <div className="flex items-center gap-x-1">
-            <Button
-              fullWidth
-              variant="outlined"
-              size="sm"
-              className="rounded-none dark:border-white/90 dark:text-white/90"
-            >
-              <span>Log In</span>
-            </Button>
-            <Button
-              fullWidth
-              variant="filled"
-              size="sm"
-              className="bg-red-900 rounded-none border border-red-900"
-            >
-              <span>Register</span>
-            </Button>
+            <Link to="/login" className="w-full">
+              <Button
+                fullWidth
+                variant="outlined"
+                size="sm"
+                className="rounded-none dark:border-white/90 dark:text-white/90"
+              >
+                <span>Log In</span>
+              </Button>
+            </Link>
+            <Link to="/register" className="w-full">
+              <Button
+                fullWidth
+                variant="filled"
+                size="sm"
+                className="bg-red-900 rounded-none border border-red-900"
+              >
+                <span>Register</span>
+              </Button>
+            </Link>
           </div>
         )}
       </Collapse>

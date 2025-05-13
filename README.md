@@ -1,10 +1,10 @@
-# EquiSports: A Sports Equipment Store
+# Sportify: A Sports Equipment Store
 
-EquiSports is a responsive and feature-rich sports equipment e-commerce platform. Designed to provide a seamless shopping experience, the website allows users to explore, purchase, and manage sports accessories across various categories. The platform is equipped with advanced functionalities like user authentication, private routes, and product management, ensuring both usability and security.
+Sportify is a responsive and feature-rich sports equipment e-commerce platform. Designed to provide a seamless shopping experience, the website allows users to explore, purchase, and manage sports accessories across various categories. The platform is equipped with advanced functionalities like user authentication, private routes, and product management, ensuring both usability and security.
 
 ## Live Website
 
-Access the live website here: https://simple-firebase-49f36.web.app/ 
+Access the live website here: https://simple-firebase-49f36.web.app/
 
 Access the server here: https://ph-assignment-10-server-rosy.vercel.app/
 
@@ -62,4 +62,4 @@ Access the server here: https://ph-assignment-10-server-rosy.vercel.app/
 - **Client-Side Code**: https://github.com/programming-hero-web-course2/b10-a10-client-side-zsnahid
 - **Server-Side Code**: https://github.com/programming-hero-web-course2/b10-a10-server-side-zsnahid
 
-Explore EquiSports and enjoy a seamless shopping experience for all your sports equipment needs!
+Explore Sportify and enjoy a seamless shopping experience for all your sports equipment needs!

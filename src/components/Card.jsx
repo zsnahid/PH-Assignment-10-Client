@@ -27,10 +27,7 @@ export function ProductCard({ equipment }) {
       delay={200} // Wait 200ms before starting
     >
       <div className="border dark:border-black h-full w-full bg-blue-gray-50/50 dark:bg-gray-800 grid grid-rows-[auto,1fr]">
-        <img
-          src={image}
-          className="w-full h-80 object-cover object-center"
-        />
+        <img src={image} className="w-full h-80 object-cover object-center" />
         <div className="p-3 flex flex-col">
           {/* texts */}
           <div className="flex-grow">

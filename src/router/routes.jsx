@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Root";
+import DashboardOverview from "../components/DashboardOverview";
 import AddEquipment from "../pages/AddEquipment";
 import AllEquipments from "../pages/AllEquipments";
+import Dashboard from "../pages/Dashboard";
 import Details from "../pages/Details";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
@@ -32,12 +34,34 @@ export const router = createBrowserRouter([
           fetch("https://ph-assignment-10-server-rosy.vercel.app/equipments"),
       },
       {
-        path: "/add-equipment",
+        path: "/dashboard",
         element: (
           <PrivateRoutes>
-            <AddEquipment />
+            <Dashboard />
           </PrivateRoutes>
         ),
+        children: [
+          {
+            path: "",
+            element: <DashboardOverview />,
+          },
+          {
+            path: "my-equipments",
+            element: <MyEquipments />,
+          },
+          {
+            path: "add-equipment",
+            element: <AddEquipment />,
+          },
+          {
+            path: "all-equipments",
+            element: <AllEquipments />,
+            loader: () =>
+              fetch(
+                "https://ph-assignment-10-server-rosy.vercel.app/equipments"
+              ),
+          },
+        ],
       },
       {
         path: "/details/:id",
@@ -50,14 +74,6 @@ export const router = createBrowserRouter([
           fetch(
             `https://ph-assignment-10-server-rosy.vercel.app/equipments/${params.id}`
           ),
-      },
-      {
-        path: "/my-equipments/filter",
-        element: (
-          <PrivateRoutes>
-            <MyEquipments />
-          </PrivateRoutes>
-        ),
       },
       {
         path: "/update/:id",

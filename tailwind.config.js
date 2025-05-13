@@ -8,7 +8,13 @@ export default withMT({
       sans: ["Montserrat", "sans-serif"],
       serif: ["Merriweather", "serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        foreground: "rgb(12, 8, 8)",
+        background: "rgb(253, 249, 249)",
+        primary: "rgb(183, 28, 28)",
+      },
+    },
   },
   plugins: [],
 });

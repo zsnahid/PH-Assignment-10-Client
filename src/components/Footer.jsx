@@ -22,12 +22,8 @@ export default function FooterWithSocialLinks() {
     <footer className="relative w-full">
       <div className="mx-auto w-full bg-black/90 px-8 pt-16">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <Typography
-            variant="h3"
-            className="mb-6"
-            color="white"
-          >
-            <span className="text-red-900">Equi</span>Sports
+          <Typography variant="h3" className="mb-6" color="white">
+            <span className="text-red-900">Sportify</span>
           </Typography>
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
@@ -60,7 +56,7 @@ export default function FooterWithSocialLinks() {
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-100 md:mb-0"
           >
-            &copy; {currentYear} EquiSports. All Rights Reserved.
+            &copy; {currentYear} Sportify. All Rights Reserved.
           </Typography>
           <div className="flex gap-4 text-white sm:justify-center">
             <Typography
