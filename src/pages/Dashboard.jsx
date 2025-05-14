@@ -25,6 +25,7 @@ import {
 } from "@material-tailwind/react";
 import { useContext, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import SearchBar from "../components/SearchBar";
 import { AuthContext } from "../contexts/AuthContext";
 import { useTheme } from "../contexts/ThemeContext.jsx";
 
@@ -43,7 +44,7 @@ export default function Dashboard() {
     <>
       <div className="p-4 border-b border-gray-700 flex items-center justify-between">
         <Typography variant="h5" className="text-gray-50">
-          Dashboard Menu
+          Dashboard
         </Typography>
         <IconButton
           variant="text"
@@ -138,16 +139,23 @@ export default function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-screen w-full">
         {/* Header */}
-        <div className="bg-gray-900 dark:bg-gray-950 p-4 flex items-center justify-between lg:justify-end gap-4 border-b border-gray-800">
-          {/* Mobile Menu Toggle */}
-          <IconButton
-            variant="text"
-            color="white"
-            className="lg:hidden"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <Bars3Icon className="h-6 w-6" />
-          </IconButton>
+        <div className="bg-gray-900 dark:bg-gray-950 p-4 flex items-center justify-between gap-4 border-b border-gray-800">
+          <div className="flex items-center gap-4 flex-1">
+            {/* Mobile Menu Toggle */}
+            <IconButton
+              variant="text"
+              color="white"
+              className="lg:hidden"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Bars3Icon className="h-6 w-6" />
+            </IconButton>
+
+            {/* Search Bar */}
+            <div className="hidden lg:block flex-1">
+              <SearchBar />
+            </div>
+          </div>
 
           <div className="flex items-center gap-4">
             <Button
