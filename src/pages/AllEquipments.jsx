@@ -1,12 +1,23 @@
 import { Button, Typography } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { ProductsTable } from "../components/ProductsTable";
 
 export default function AllEquipments() {
   const data = useLoaderData();
-
   const [equipments, setEquipments] = useState(data);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredEquipments, setFilteredEquipments] = useState(data);
+
+  // Handle search
+  useEffect(() => {
+    const filtered = equipments.filter(
+      (equipment) =>
+        equipment.item.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        equipment.category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredEquipments(filtered);
+  }, [searchQuery, equipments]);
 
   const handleSorting = () => {
     fetch("https://ph-assignment-10-server-rosy.vercel.app/equipments-sorted")
@@ -28,7 +39,11 @@ export default function AllEquipments() {
           Sort by Price
         </Button>
       </div>
-      <ProductsTable equipments={equipments} />
+      <ProductsTable
+        equipments={filteredEquipments}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
     </div>
   );
 }
