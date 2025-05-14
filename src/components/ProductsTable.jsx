@@ -68,6 +68,14 @@ export function ProductsTable({ equipments, searchQuery, onSearchChange }) {
                   variant="small"
                   className="font-semibold text-gray-700 dark:text-gray-300"
                 >
+                  Stock
+                </Typography>
+              </th>
+              <th className="border-b border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50 p-5">
+                <Typography
+                  variant="small"
+                  className="font-semibold text-gray-700 dark:text-gray-300"
+                >
                   Price
                 </Typography>
               </th>
@@ -85,7 +93,7 @@ export function ProductsTable({ equipments, searchQuery, onSearchChange }) {
             {currentItems.length === 0 ? (
               <tr>
                 <td
-                  colSpan="5"
+                  colSpan="6"
                   className="p-8 text-center border-b border-gray-200 dark:border-gray-800"
                 >
                   <div className="flex flex-col items-center gap-2">
@@ -114,7 +122,18 @@ export function ProductsTable({ equipments, searchQuery, onSearchChange }) {
               </tr>
             ) : (
               currentItems.map(
-                ({ _id, image, item, category, price }, index) => {
+                (
+                  {
+                    _id,
+                    image,
+                    item,
+                    category,
+                    price,
+                    stockQuantity,
+                    stockStatus,
+                  },
+                  index
+                ) => {
                   const isLast = index === currentItems.length - 1;
                   const classes = isLast
                     ? "p-5"
@@ -149,6 +168,26 @@ export function ProductsTable({ equipments, searchQuery, onSearchChange }) {
                             className="font-medium px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
                           >
                             {category}
+                          </Typography>
+                        </div>
+                      </td>
+                      <td className={classes}>
+                        <div className="flex flex-col">
+                          <Typography
+                            variant="small"
+                            className="font-medium text-gray-700 dark:text-gray-300"
+                          >
+                            {stockQuantity}
+                          </Typography>
+                          <Typography
+                            variant="small"
+                            className={`text-xs ${
+                              stockStatus === "In Stock"
+                                ? "text-green-600 dark:text-green-400"
+                                : "text-red-600 dark:text-red-400"
+                            }`}
+                          >
+                            {stockStatus}
                           </Typography>
                         </div>
                       </td>
