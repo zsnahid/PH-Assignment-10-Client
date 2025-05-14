@@ -21,20 +21,6 @@ export default function DashboardOverview() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Link to="my-equipments">
-          <Card className="p-4 hover:shadow-lg transition-all border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
-            <Typography
-              variant="h6"
-              className="mb-2 text-gray-800 dark:text-gray-100"
-            >
-              My Equipment
-            </Typography>
-            <Typography className="text-gray-600 dark:text-gray-300">
-              View and manage your equipment
-            </Typography>
-          </Card>
-        </Link>
-
         <Link to="add-equipment">
           <Card className="p-4 hover:shadow-lg transition-all border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
             <Typography

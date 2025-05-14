@@ -3,7 +3,6 @@ import {
   HomeIcon,
   MoonIcon,
   PlusCircleIcon,
-  RectangleGroupIcon,
   Square3Stack3DIcon,
   SunIcon,
   UserCircleIcon,
@@ -77,18 +76,7 @@ export default function Dashboard() {
             Overview
           </ListItem>
         </Link>
-        <Link to="/dashboard/my-equipments">
-          <ListItem
-            className={`${isActive(
-              "/dashboard/my-equipments"
-            )} hover:bg-red-900/20 hover:text-red-200 transition-colors`}
-          >
-            <ListItemPrefix>
-              <RectangleGroupIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            My Equipments
-          </ListItem>
-        </Link>
+
         <Link to="/dashboard/add-equipment">
           <ListItem
             className={`${isActive(

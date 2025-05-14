@@ -35,6 +35,7 @@ export default function SearchBar() {
     // Clear results if search query is empty
     if (!searchQuery.trim()) {
       setSearchResults([]);
+      setShowResults(false);
       return;
     }
 

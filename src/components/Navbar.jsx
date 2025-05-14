@@ -59,12 +59,12 @@ export default function StickyNavbar() {
         className="px-3 py-1 font-semibold text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
       >
         <NavLink
-          to="/all-equipments"
+          to="/products"
           className={({ isActive }) =>
             isActive ? "text-red-600 dark:text-red-400" : ""
           }
         >
-          All Equipments
+          All Products
         </NavLink>
       </Typography>
     </ul>

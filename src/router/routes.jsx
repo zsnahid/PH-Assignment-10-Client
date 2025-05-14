@@ -3,12 +3,13 @@ import Root from "../Root";
 import DashboardOverview from "../components/DashboardOverview";
 import AddEquipment from "../pages/AddEquipment";
 import AllEquipments from "../pages/AllEquipments";
+import AllProducts from "../pages/AllProducts";
 import Dashboard from "../pages/Dashboard";
 import Details from "../pages/Details";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
-import MyEquipments from "../pages/MyEquipments";
+
 import { SimpleRegistrationForm } from "../pages/Register";
 import Update from "../pages/Update";
 import PrivateRoutes from "./PrivateRoutes";
@@ -28,8 +29,8 @@ export const router = createBrowserRouter([
           ),
       },
       {
-        path: "/all-equipments",
-        element: <AllEquipments />,
+        path: "/products",
+        element: <AllProducts />,
         loader: () =>
           fetch("https://ph-assignment-10-server-rosy.vercel.app/equipments"),
       },
@@ -45,10 +46,7 @@ export const router = createBrowserRouter([
             path: "",
             element: <DashboardOverview />,
           },
-          {
-            path: "my-equipments",
-            element: <MyEquipments />,
-          },
+
           {
             path: "add-equipment",
             element: <AddEquipment />,
@@ -65,11 +63,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: (
-          <PrivateRoutes>
-            <Details />
-          </PrivateRoutes>
-        ),
+        element: <Details />,
         loader: ({ params }) =>
           fetch(
             `https://ph-assignment-10-server-rosy.vercel.app/equipments/${params.id}`

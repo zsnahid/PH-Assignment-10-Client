@@ -11,50 +11,17 @@ export default function ErrorPage() {
         >
           Oops!
         </Typography>
-        <Typography
-          variant="h4"
-          className="text-3xl text-gray-600 mb-6"
-        >
+        <Typography variant="h4" className="text-3xl text-gray-600 mb-6">
           We can't seem to find the page you're looking for.
         </Typography>
         <div>
-          <Typography
-            variant="paragraph"
-            className="text-gray-600 mb-4"
-          >
-            Here are some helpful links instead:
+          <Typography variant="paragraph" className="text-gray-600 mb-4">
+            Return home:
           </Typography>
           <ul className="text-red-900 space-y-2">
             <li>
-              <a
-                href="/"
-                className="hover:underline"
-              >
+              <a href="/" className="hover:underline">
                 Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/all-equipments"
-                className="hover:underline"
-              >
-                All Equipments
-              </a>
-            </li>
-            <li>
-              <a
-                href="/add-equipments"
-                className="hover:underline"
-              >
-                Add Equipments
-              </a>
-            </li>
-            <li>
-              <a
-                href="/my-equipments"
-                className="hover:underline"
-              >
-                My Equipments
               </a>
             </li>
           </ul>
