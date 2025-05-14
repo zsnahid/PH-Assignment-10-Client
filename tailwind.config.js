@@ -7,8 +7,9 @@ export default withMT({
   darkMode: "selector",
   theme: {
     fontFamily: {
-      sans: ["Montserrat", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      barlow: ["Barlow Condensed", "sans-serif"],
+      "dm-sans": ["DM Sans", "sans-serif"],
+      sans: ["DM Sans", "sans-serif"],
     },
     extend: {
       colors: {

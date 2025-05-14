@@ -40,10 +40,10 @@ export function ProductCard({ product }) {
         </div>
       </CardHeader>
       <CardBody className="p-4 flex flex-col h-[140px]">
-        <div className="flex-1">
+        <div className="flex-1 overflow-hidden">
           <div className="mb-3 flex items-center justify-between">
             <Typography
-              variant="h5"
+              variant="h6"
               color="blue-gray"
               className="font-medium line-clamp-1"
             >
