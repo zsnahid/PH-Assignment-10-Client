@@ -85,14 +85,14 @@ export default function StickyNavbar() {
   );
 
   return (
-    <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none border-none px-4 py-2 shadow-md dark:bg-gray-900 dark:text-white lg:px-8 lg:py-4">
+    <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none border-none px-4 py-2 shadow-md dark:bg-gray-900 dark:text-white lg:px-11 lg:py-4">
       <div className="flex items-center justify-between text-gray-900">
         <Typography
           as={Link}
           to="/"
-          className="mr-4 cursor-pointer py-1.5 font-bold text-red-600 dark:text-red-400"
+          className="mr-4 cursor-pointer py-1.5 font-bold text-2xl text-red-600 dark:text-red-400"
         >
-          Sports Gear Hub
+          Sportify
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>

@@ -117,7 +117,7 @@ export default function ReviewCarousel() {
       >
         {reviews.map((item, index) => (
           <div key={index} className="relative h-[400px] w-full">
-            <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
+            <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/90">
               <div className="w-3/4 text-center md:w-2/4">
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
                   <svg
