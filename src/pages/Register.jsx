@@ -85,7 +85,11 @@ export function SimpleRegistrationForm() {
         backgroundBlendMode: "overlay",
       }}
     >
-      <Card color="transparent" shadow={false} className="my-10 bg-white p-6">
+      <Card
+        color="transparent"
+        shadow={false}
+        className="my-10 bg-white/90 p-6 dark:bg-gray-900"
+      >
         <Typography
           variant="h4"
           color="blue-gray"
@@ -115,7 +119,7 @@ export function SimpleRegistrationForm() {
               size="lg"
               placeholder="John Doe"
               name="name"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 rounded-none"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900  dark:text-gray-500"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -131,7 +135,7 @@ export function SimpleRegistrationForm() {
               size="lg"
               placeholder="Photo URL"
               name="photo"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 rounded-none"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900  dark:text-gray-500"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -148,7 +152,7 @@ export function SimpleRegistrationForm() {
               placeholder="name@mail.com"
               name="email"
               type="email"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 rounded-none"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900  dark:text-gray-500"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -165,7 +169,7 @@ export function SimpleRegistrationForm() {
               size="lg"
               placeholder="********"
               name="password"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900 rounded-none"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900  dark:text-gray-500"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -190,9 +194,10 @@ export function SimpleRegistrationForm() {
             containerProps={{ className: "-ml-2.5" }}
           />
           <Button
+            color="red"
             type="submit"
             value="Register"
-            className="my-6 bg-red-900 rounded-none"
+            className="my-6"
             fullWidth
           >
             Register
@@ -206,7 +211,7 @@ export function SimpleRegistrationForm() {
           variant="outlined"
           color="blue-gray"
           fullWidth
-          className="flex items-center justify-center gap-3 rounded-none dark:text-blue-gray-500"
+          className="flex items-center justify-center gap-3 dark:text-blue-gray-500"
           onClick={handleGoogleSignIn}
         >
           <img

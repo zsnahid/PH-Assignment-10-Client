@@ -48,9 +48,12 @@ export default function LogIn() {
         backgroundBlendMode: "overlay",
       }}
     >
-      <Card className="p-8 w-96 bg-white/90 backdrop-blur-sm shadow-xl border border-gray-200">
+      <Card className="p-8 w-96 bg-white/90 backdrop-blur-sm shadow-xl border border-gray-200 dark:bg-gray-900 dark:border-gray-900">
         <div className="text-center mb-6">
-          <Typography variant="h4" className="text-gray-800 font-bold">
+          <Typography
+            variant="h4"
+            className="text-gray-900 font-bold dark:text-gray-100"
+          >
             Welcome Back
           </Typography>
           <Typography className="text-gray-600 mt-1">
@@ -62,7 +65,7 @@ export default function LogIn() {
             <div>
               <Typography
                 variant="h6"
-                className="text-gray-700 mb-2 flex items-center gap-2"
+                className="text-gray-700 mb-2 flex items-center gap-2 dark:text-gray-600"
               >
                 <FaEnvelope /> Your Email
               </Typography>
@@ -70,7 +73,7 @@ export default function LogIn() {
                 size="lg"
                 placeholder="name@mail.com"
                 name="email"
-                className="!border-gray-300 focus:!border-red-500 rounded-md"
+                className="!border-gray-300 focus:!border-red-500 rounded-md dark:text-gray-500"
                 labelProps={{
                   className: "before:content-none after:content-none",
                 }}
@@ -79,7 +82,7 @@ export default function LogIn() {
             <div>
               <Typography
                 variant="h6"
-                className="text-gray-700 mb-2 flex items-center gap-2"
+                className="text-gray-700 mb-2 flex items-center gap-2 dark:text-gray-600"
               >
                 <FaLock /> Password
               </Typography>
@@ -88,7 +91,7 @@ export default function LogIn() {
                 size="lg"
                 placeholder="********"
                 name="password"
-                className="!border-gray-300 focus:!border-red-500 rounded-md"
+                className="!border-gray-300 focus:!border-red-500 rounded-md dark:text-gray-500"
                 labelProps={{
                   className: "before:content-none after:content-none",
                 }}

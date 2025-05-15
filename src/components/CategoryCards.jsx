@@ -54,7 +54,7 @@ export default function CategoryCards() {
         {categories.map((category) => (
           <Card
             key={category._id}
-            className="overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
+            className="overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300  dark:bg-gray-950"
             onClick={() => handleCategoryClick(category.name)}
           >
             <CardHeader
@@ -75,7 +75,10 @@ export default function CategoryCards() {
               >
                 {category.name}
               </Typography>
-              <Typography color="gray" className="mt-2 text-center text-sm">
+              <Typography
+                color="gray"
+                className="mt-2 text-center text-sm dark:text-gray-500"
+              >
                 {category.productCount} Products
               </Typography>
             </CardBody>

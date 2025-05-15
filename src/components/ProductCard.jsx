@@ -17,7 +17,7 @@ export function ProductCard({ product }) {
 
   return (
     <Card
-      className="overflow-hidden cursor-pointer hover:shadow-2xl transition-shadow duration-300"
+      className="overflow-hidden cursor-pointer hover:shadow-2xl transition-shadow duration-300 dark:bg-gray-950"
       onClick={handleClick}
     >
       <CardHeader
@@ -45,7 +45,7 @@ export function ProductCard({ product }) {
             <Typography
               variant="h6"
               color="blue-gray"
-              className="font-medium line-clamp-1"
+              className="font-medium line-clamp-1 dark:text-gray-100"
             >
               {product.item}
             </Typography>
@@ -55,7 +55,7 @@ export function ProductCard({ product }) {
           </div>
           <Typography
             color="gray"
-            className="font-normal line-clamp-2 text-sm opacity-75"
+            className="font-normal line-clamp-2 text-sm opacity-75 dark:text-gray-500"
           >
             {product.description || "No description available"}
           </Typography>

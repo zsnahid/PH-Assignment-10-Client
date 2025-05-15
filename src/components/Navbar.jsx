@@ -85,7 +85,7 @@ export default function StickyNavbar() {
   );
 
   return (
-    <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none border-none px-4 py-2 shadow-md dark:bg-gray-900 dark:text-white lg:px-11 lg:py-4">
+    <Navbar className="sticky top-0 z-20 h-max max-w-full rounded-none border-none px-4 py-2 shadow-md dark:bg-gray-900 dark:text-white lg:px-11 lg:py-4">
       <div className="flex items-center justify-between text-gray-900">
         <Typography
           as={Link}

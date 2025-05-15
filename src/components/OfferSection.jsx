@@ -63,9 +63,12 @@ export default function OfferSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {offerProducts.slice(0, 4).map((product) => (
           <div key={product._id} className="relative">
-            <div className="absolute -top-0 -right-3 z-10">
-              <div className="bg-red-600 text-white px-3 py-1 rounded-full">
-                <Typography variant="small" className="font-medium">
+            <div className="absolute -top-3 -right-4 z-10">
+              <div className="bg-red-600 text-white px-3 py-3 rounded-full">
+                <Typography className="line-through">
+                  ৳{product.originalPrice}
+                </Typography>
+                <Typography variant="paragraph" className="font-medium">
                   {Math.round(
                     ((product.originalPrice - product.price) /
                       product.originalPrice) *
