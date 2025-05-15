@@ -4,12 +4,12 @@ import DashboardOverview from "../components/DashboardOverview";
 import AddEquipment from "../pages/AddEquipment";
 import AllEquipments from "../pages/AllEquipments";
 import AllProducts from "../pages/AllProducts";
+import CategoryProducts from "../pages/CategoryProducts";
 import Dashboard from "../pages/Dashboard";
 import Details from "../pages/Details";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
-
 import { SimpleRegistrationForm } from "../pages/Register";
 import Update from "../pages/Update";
 import PrivateRoutes from "./PrivateRoutes";
@@ -33,6 +33,10 @@ export const router = createBrowserRouter([
         element: <AllProducts />,
         loader: () =>
           fetch("https://ph-assignment-10-server-rosy.vercel.app/equipments"),
+      },
+      {
+        path: "/category/:category",
+        element: <CategoryProducts />,
       },
       {
         path: "/dashboard",

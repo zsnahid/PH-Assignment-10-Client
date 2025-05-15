@@ -122,7 +122,7 @@ export default function StickyNavbar() {
               </Menu>
             ) : (
               <Button
-                variant="gradient"
+                variant="filled"
                 size="sm"
                 color="red"
                 className="hidden lg:inline-block"

@@ -77,10 +77,7 @@ export function SimpleRegistrationForm() {
 
   return (
     <div className="flex justify-center items-center my-10">
-      <Card
-        color="transparent"
-        shadow={false}
-      >
+      <Card color="transparent" shadow={false}>
         <Typography
           variant="h4"
           color="blue-gray"
@@ -211,10 +208,7 @@ export function SimpleRegistrationForm() {
           />
           Continue with Google
         </Button>
-        <Typography
-          color="gray"
-          className="mt-4 text-center font-normal"
-        >
+        <Typography color="gray" className="mt-4 text-center font-normal">
           Already have an account?{" "}
           <a
             href="/login"

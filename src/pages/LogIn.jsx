@@ -1,5 +1,6 @@
 import { Button, Card, Input, Typography } from "@material-tailwind/react";
 import { useContext } from "react";
+import { FaEnvelope, FaGoogle, FaLock } from "react-icons/fa"; // Added icons
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthContext";
@@ -38,76 +39,112 @@ export default function LogIn() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[50vh]">
-      <Card color="transparent" shadow={false}>
-        <form
-          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-          onSubmit={handleLogIn}
-        >
-          <div className="mb-1 flex flex-col gap-6">
-            <Typography
-              variant="h6"
-              className="text-gray-800 dark:text-gray-200"
+    <div
+      className="flex justify-center items-center min-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80')",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundBlendMode: "overlay",
+      }}
+    >
+      <Card className="p-8 w-96 bg-white/90 backdrop-blur-sm shadow-xl border border-gray-200">
+        <div className="text-center mb-6">
+          <Typography variant="h4" className="text-gray-800 font-bold">
+            Welcome Back
+          </Typography>
+          <Typography className="text-gray-600 mt-1">
+            Sign in to continue to your account
+          </Typography>
+        </div>
+        <form className="mt-6 mb-2 w-full" onSubmit={handleLogIn}>
+          <div className="mb-1 flex flex-col gap-5">
+            <div>
+              <Typography
+                variant="h6"
+                className="text-gray-700 mb-2 flex items-center gap-2"
+              >
+                <FaEnvelope /> Your Email
+              </Typography>
+              <Input
+                size="lg"
+                placeholder="name@mail.com"
+                name="email"
+                className="!border-gray-300 focus:!border-red-500 rounded-md"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+              />
+            </div>
+            <div>
+              <Typography
+                variant="h6"
+                className="text-gray-700 mb-2 flex items-center gap-2"
+              >
+                <FaLock /> Password
+              </Typography>
+              <Input
+                type="password"
+                size="lg"
+                placeholder="********"
+                name="password"
+                className="!border-gray-300 focus:!border-red-500 rounded-md"
+                labelProps={{
+                  className: "before:content-none after:content-none",
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-between items-center my-4">
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="remember"
+                className="w-4 h-4 accent-red-500"
+              />
+              <label htmlFor="remember" className="text-sm text-gray-600">
+                Remember me
+              </label>
+            </div>
+            <a
+              href="/forgot-password"
+              className="text-sm text-gray-600 hover:text-gray-700"
             >
-              Your Email
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="name@mail.com"
-              name="email"
-              className="!border-gray-300 focus:!border-red-500 rounded-none"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-            <Typography
-              variant="h6"
-              className="text-gray-800 dark:text-gray-200"
-            >
-              Password
-            </Typography>
-            <Input
-              type="password"
-              size="lg"
-              placeholder="********"
-              name="password"
-              className="!border-gray-300 focus:!border-red-500 rounded-none"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
+              Forgot password?
+            </a>
           </div>
 
           <Button
-            className="mt-6 rounded-none bg-red-600 hover:bg-red-700"
+            color="red"
+            className="mt-6 rounded-md shadow-md hover:shadow-lg transition-all duration-300"
             fullWidth
             type="submit"
           >
             Log In
           </Button>
+
           <div className="my-6 flex items-center before:flex-1 before:border-t before:border-gray-300 after:flex-1 after:border-t after:border-gray-300">
-            <span className="mx-3 text-gray-500">or</span>
+            <span className="mx-3 text-gray-500 px-4">or</span>
           </div>
+
           <Button
             size="md"
             variant="outlined"
             color="red"
             fullWidth
-            className="flex items-center justify-center gap-3 rounded-none border-red-500 text-red-500 hover:bg-red-50"
+            className="flex items-center justify-center gap-3 rounded-md border-gray-600 text-gray-600 hover:text-gray-700 hover:border-gray-600 transition-all duration-300"
             onClick={handleGoogleSignIn}
           >
-            <img
-              src="https://docs.material-tailwind.com/icons/google.svg"
-              alt="metamask"
-              className="h-4 w-4"
-            />
+            <FaGoogle className="h-4 w-4" />
             Continue with Google
           </Button>
-          <Typography className="mt-4 text-center font-normal text-gray-600">
-            Don&apos;t have and account?{" "}
+
+          <Typography className="mt-6 text-center font-normal text-gray-600">
+            Don&apos;t have an account?{" "}
             <a
               href="/register"
-              className="font-medium text-red-600 hover:text-red-700"
+              className="font-medium text-red-600 hover:text-red-700 underline"
             >
               Register
             </a>
