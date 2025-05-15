@@ -1,7 +1,7 @@
-import Brands from "../components/Brands";
 import { CarouselWithContent } from "../components/Carousel";
 import CategoryCards from "../components/CategoryCards";
 import FeaturedItems from "../components/FeaturedItems";
+import ReviewCarousel from "../components/ReviewCarousel";
 import SecondHero from "../components/SecondHero";
 
 export default function Home() {
@@ -11,7 +11,8 @@ export default function Home() {
       <CategoryCards />
       <SecondHero />
       <FeaturedItems />
-      <Brands />
+      {/* <OfferSection /> */}
+      <ReviewCarousel />
     </div>
   );
 }

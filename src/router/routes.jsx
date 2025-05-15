@@ -4,6 +4,8 @@ import DashboardOverview from "../components/DashboardOverview";
 import AddEquipment from "../pages/AddEquipment";
 import AllEquipments from "../pages/AllEquipments";
 import AllProducts from "../pages/AllProducts";
+import Blog from "../pages/Blog";
+import BlogDetail from "../pages/BlogDetail";
 import CategoryProducts from "../pages/CategoryProducts";
 import Dashboard from "../pages/Dashboard";
 import Details from "../pages/Details";
@@ -92,6 +94,14 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <SimpleRegistrationForm />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetail />,
       },
     ],
   },
