@@ -12,6 +12,7 @@ import Details from "../pages/Details";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
+import OfferProducts from "../pages/OfferProducts";
 import Profile from "../pages/Profile";
 import { SimpleRegistrationForm } from "../pages/Register";
 import Update from "../pages/Update";
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/category/:category",
         element: <CategoryProducts />,
+      },
+      {
+        path: "/offers",
+        element: <OfferProducts />,
       },
       {
         path: "/dashboard",

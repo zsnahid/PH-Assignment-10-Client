@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthContext";
@@ -13,6 +14,9 @@ import { AuthContext } from "../contexts/AuthContext";
 export function SimpleRegistrationForm() {
   const { createUser, googleSignIn, updateUserProfile } =
     useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -49,6 +53,7 @@ export function SimpleRegistrationForm() {
         // console.log(userCredential);
         updateUserProfile({ displayName: name, photoURL: photo })
           .then(() => {
+            navigate(from, { replace: true });
             Swal.fire({
               icon: "success",
               text: "Account Created Successfully",

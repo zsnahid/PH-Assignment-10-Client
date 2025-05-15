@@ -8,9 +8,11 @@ export default function Root() {
   const isDashboard = location.pathname.startsWith("/dashboard");
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       {!isDashboard && <StickyNavbar />}
-      <Outlet />
+      <div className="flex-1 min-h-[calc(100vh-80px)]">
+        <Outlet />
+      </div>
       {!isDashboard && <FooterWithSocialLinks />}
       <ToastContainer position="top-center" hideProgressBar />
     </div>

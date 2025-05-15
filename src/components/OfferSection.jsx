@@ -1,11 +1,13 @@
-import { Typography } from "@material-tailwind/react";
+import { Button, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ProductCard } from "./ProductCard";
 
 export default function OfferSection() {
   const [offerProducts, setOfferProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOfferProducts = async () => {
@@ -41,6 +43,10 @@ export default function OfferSection() {
   if (offerProducts.length === 0) {
     return null;
   }
+
+  const handleOfferClick = () => {
+    navigate("/offers");
+  };
 
   return (
     <div className="mt-20 max-w-screen-2xl w-11/12 mx-auto">
@@ -81,6 +87,11 @@ export default function OfferSection() {
             <ProductCard product={product} />
           </div>
         ))}
+      </div>
+      <div className="flex justify-center items-center mt-6">
+        <Button onClick={() => handleOfferClick()} className="rounded-full">
+          All Offers
+        </Button>
       </div>
     </div>
   );

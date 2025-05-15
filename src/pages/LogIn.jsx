@@ -1,12 +1,16 @@
 import { Button, Card, Input, Typography } from "@material-tailwind/react";
 import { useContext } from "react";
 import { FaEnvelope, FaGoogle, FaLock } from "react-icons/fa"; // Added icons
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function LogIn() {
   const { logIn, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -15,6 +19,7 @@ export default function LogIn() {
     const password = form.password.value;
     logIn(email, password)
       .then((userCredential) => {
+        navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
           text: `Logged in as ${userCredential.user?.displayName}`,
