@@ -24,6 +24,7 @@
     "react-router-dom": "^7.1.0",
     "react-timer-hook": "^3.0.8",
     "react-toastify": "^11.0.2",
+    "recharts": "^2.15.3",
     "sweetalert2": "^11.15.3",
     "swiper": "^11.1.15"
   },
