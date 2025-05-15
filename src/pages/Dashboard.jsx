@@ -77,6 +77,19 @@ export default function Dashboard() {
           </ListItem>
         </Link>
 
+        <Link to="/dashboard/profile">
+          <ListItem
+            className={`${isActive(
+              "/dashboard/profile"
+            )} hover:bg-red-900/20 hover:text-red-200 transition-colors`}
+          >
+            <ListItemPrefix>
+              <UserCircleIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Profile
+          </ListItem>
+        </Link>
+
         <Link to="/dashboard/add-equipment">
           <ListItem
             className={`${isActive(
@@ -169,14 +182,16 @@ export default function Dashboard() {
                 />
               </MenuHandler>
               <MenuList className="p-1 dark:bg-gray-900">
-                <MenuItem className="flex items-center gap-2 rounded hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-900 dark:hover:text-red-200">
-                  <Typography
-                    variant="small"
-                    className="font-medium dark:text-gray-200"
-                  >
-                    {user?.displayName}
-                  </Typography>
-                </MenuItem>
+                <Link to="/dashboard/profile">
+                  <MenuItem className="flex items-center gap-2 rounded hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-900 dark:hover:text-red-200">
+                    <Typography
+                      variant="small"
+                      className="font-medium dark:text-gray-200"
+                    >
+                      {user?.displayName}
+                    </Typography>
+                  </MenuItem>
+                </Link>
                 <MenuItem
                   className="flex items-center gap-2 rounded hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-900 dark:hover:text-red-200"
                   onClick={() => {

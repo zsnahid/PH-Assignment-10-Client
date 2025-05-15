@@ -12,6 +12,7 @@ import Details from "../pages/Details";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
+import Profile from "../pages/Profile";
 import { SimpleRegistrationForm } from "../pages/Register";
 import Update from "../pages/Update";
 import PrivateRoutes from "./PrivateRoutes";
@@ -52,7 +53,10 @@ export const router = createBrowserRouter([
             path: "",
             element: <DashboardOverview />,
           },
-
+          {
+            path: "profile",
+            element: <Profile />,
+          },
           {
             path: "add-equipment",
             element: <AddEquipment />,
