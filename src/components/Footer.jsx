@@ -32,7 +32,7 @@ const currentYear = new Date().getFullYear();
 
 export default function FooterWithSocialLinks() {
   return (
-    <footer className="relative w-full mt-20">
+    <footer className="relative w-full">
       <div className="mx-auto w-full bg-gray-900 dark:bg-gray-950 px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Column */}

@@ -11,9 +11,11 @@ export default function OfferSection() {
     const fetchOfferProducts = async () => {
       try {
         const { data } = await axios.get(
-          "https://ph-assignment-10-server-rosy.vercel.app/equipments-offers"
+          "https://ph-assignment-10-server-rosy.vercel.app/equipments/discounted"
         );
-        setOfferProducts(data);
+        console.log(data);
+
+        setOfferProducts(data.data);
       } catch (error) {
         console.error(
           "Error fetching offer products:",
@@ -59,10 +61,10 @@ export default function OfferSection() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {offerProducts.map((product) => (
+        {offerProducts.slice(0, 4).map((product) => (
           <div key={product._id} className="relative">
-            <div className="absolute -top-2 -right-2 z-10">
-              <div className="bg-red-600 text-white px-3 py-1 rounded-full shadow-lg">
+            <div className="absolute -top-0 -right-3 z-10">
+              <div className="bg-red-600 text-white px-3 py-1 rounded-full">
                 <Typography variant="small" className="font-medium">
                   {Math.round(
                     ((product.originalPrice - product.price) /

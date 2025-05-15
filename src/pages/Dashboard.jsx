@@ -41,7 +41,7 @@ export default function Dashboard() {
 
   const sidebarContent = (
     <>
-      <div className="p-4 border-b border-gray-700 flex items-center justify-between">
+      <div className="p-4 flex items-center justify-between">
         <Typography variant="h5" className="text-gray-50">
           Dashboard
         </Typography>

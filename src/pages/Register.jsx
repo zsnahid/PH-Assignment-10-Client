@@ -76,8 +76,16 @@ export function SimpleRegistrationForm() {
   };
 
   return (
-    <div className="flex justify-center items-center my-10">
-      <Card color="transparent" shadow={false}>
+    <div
+      className="flex justify-center items-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1542159919831-40fb0656b45a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundBlendMode: "overlay",
+      }}
+    >
+      <Card color="transparent" shadow={false} className="my-10 bg-white p-6">
         <Typography
           variant="h4"
           color="blue-gray"
