@@ -1,4 +1,9 @@
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Avatar,
   Button,
@@ -37,6 +42,10 @@ export default function StickyNavbar() {
       });
   };
 
+  const handleNavLinkClick = () => {
+    setOpenNav(false); // Close drawer when clicking a route
+  };
+
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -49,6 +58,7 @@ export default function StickyNavbar() {
           className={({ isActive }) =>
             isActive ? "text-red-600 dark:text-red-400" : ""
           }
+          onClick={handleNavLinkClick}
         >
           Home
         </NavLink>
@@ -63,6 +73,7 @@ export default function StickyNavbar() {
           className={({ isActive }) =>
             isActive ? "text-red-600 dark:text-red-400" : ""
           }
+          onClick={handleNavLinkClick}
         >
           All Products
         </NavLink>
@@ -77,6 +88,7 @@ export default function StickyNavbar() {
           className={({ isActive }) =>
             isActive ? "text-red-600 dark:text-red-400" : ""
           }
+          onClick={handleNavLinkClick}
         >
           Offers
         </NavLink>
@@ -91,6 +103,7 @@ export default function StickyNavbar() {
           className={({ isActive }) =>
             isActive ? "text-red-600 dark:text-red-400" : ""
           }
+          onClick={handleNavLinkClick}
         >
           Blog
         </NavLink>
@@ -162,44 +175,21 @@ export default function StickyNavbar() {
           </div>
           <IconButton
             variant="text"
-            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-            ripple={false}
+            className="lg:hidden ml-auto text-gray-700 dark:text-gray-200"
             onClick={() => setOpenNav(!openNav)}
           >
             {openNav ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                className="h-6 w-6"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <XMarkIcon className="h-6 w-6" />
             ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              <Bars3Icon className="h-6 w-6" />
             )}
           </IconButton>
         </div>
       </div>
-      <Collapse open={openNav}>
+      <Collapse
+        open={openNav}
+        className="absolute left-0 right-0 top-full bg-white dark:bg-gray-900 shadow-lg z-10"
+      >
         {navList}
         {!user && (
           <Button

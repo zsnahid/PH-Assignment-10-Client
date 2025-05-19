@@ -62,7 +62,7 @@ export default function AllProducts() {
         </Typography>
 
         {/* Search and Filter Controls */}
-        <div className="flex flex-col md:flex-row gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-4 lg:items-center">
           <div className="w-full md:w-1/2">
             <SearchBar
               value={searchQuery}
@@ -71,7 +71,7 @@ export default function AllProducts() {
             />
           </div>
 
-          <div className="flex gap-4 w-full md:w-1/2">
+          <div className="flex flex-col lg:flex-row gap-4 w-full md:w-1/2">
             <Select
               value={selectedCategory}
               onChange={(value) => setSelectedCategory(value)}

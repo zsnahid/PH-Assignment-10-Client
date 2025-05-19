@@ -4,7 +4,7 @@ import tailwindScrollbar from "tailwind-scrollbar";
 /** @type {import('tailwindcss').Config} */
 export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "selector",
+  isDarkMode: "selector",
   theme: {
     fontFamily: {
       barlow: ["Barlow Condensed", "sans-serif"],

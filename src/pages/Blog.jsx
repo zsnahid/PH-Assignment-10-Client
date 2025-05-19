@@ -33,14 +33,17 @@ export default function Blog() {
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4 py-16">
-      <Typography variant="h2" color="blue-gray" className="mb-8">
+    <div className="max-w-screen-xl mx-auto px-4 py-16 dark:bg-gray-900">
+      <Typography variant="h2" className="mb-8 dark:text-gray-100">
         Sports & Fitness Blog
       </Typography>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <Card key={post._id} className="overflow-hidden">
+          <Card
+            key={post._id}
+            className="overflow-hidden flex flex-col dark:bg-black"
+          >
             <div className="h-48 overflow-hidden">
               <img
                 src={post.image}
@@ -48,7 +51,7 @@ export default function Blog() {
                 className="w-full h-full object-cover transition-transform hover:scale-110 duration-300"
               />
             </div>
-            <div className="p-6">
+            <div className="p-6 flex-grow flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Chip
                   value={post.category}
@@ -57,7 +60,7 @@ export default function Blog() {
                   color="red"
                   className="rounded-full"
                 />
-                <Typography color="gray" className="text-sm">
+                <Typography className="text-sm text-gray-600 dark:text-gray-400">
                   {new Date(post.publishDate).toLocaleDateString("en-US", {
                     month: "long",
                     day: "numeric",
@@ -68,22 +71,28 @@ export default function Blog() {
 
               <Typography
                 variant="h5"
-                color="blue-gray"
-                className="mb-2 line-clamp-2"
+                className="mb-2 line-clamp-2 dark:text-gray-200"
               >
                 {post.title}
               </Typography>
 
-              <Typography color="gray" className="mb-4 line-clamp-2">
+              <Typography
+                color="gray"
+                className="flex-grow mb-4 line-clamp-2 dark:text-gray-500"
+              >
                 {post.summary}
               </Typography>
 
               <div className="flex items-center justify-between">
-                <Typography color="gray" className="text-sm">
+                <Typography className="text-sm  text-gray-600 dark:text-gray-400">
                   By {post.author}
                 </Typography>
                 <Link to={`/blog/${post._id}`}>
-                  <Button size="sm" color="red" variant="outlined">
+                  <Button
+                    size="sm"
+                    variant="outlined"
+                    className="dark:text-white dark:border-white"
+                  >
                     Read More
                   </Button>
                 </Link>
