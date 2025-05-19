@@ -1,4 +1,4 @@
-import { Button, Card, Input, Typography } from "@material-tailwind/react";
+import { Card, Input, Typography } from "@material-tailwind/react";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
@@ -122,31 +122,6 @@ export default function Profile() {
                       ).toLocaleDateString()
                     : "N/A"}
                 </Typography>
-              </div>
-
-              <div className="pt-4 flex gap-4">
-                {isEditing ? (
-                  <>
-                    <Button type="submit" color="red">
-                      Save Changes
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      color="red"
-                      onClick={() => setIsEditing(false)}
-                    >
-                      Cancel
-                    </Button>
-                  </>
-                ) : (
-                  <Button
-                    variant="outlined"
-                    color="red"
-                    onClick={() => setIsEditing(true)}
-                  >
-                    Edit Profile
-                  </Button>
-                )}
               </div>
             </form>
           </div>
