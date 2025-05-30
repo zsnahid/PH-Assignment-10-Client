@@ -15,7 +15,6 @@ export default function OfferSection() {
         const { data } = await axios.get(
           "https://ph-assignment-10-server-rosy.vercel.app/equipments/discounted"
         );
-        console.log(data);
 
         setOfferProducts(data.data);
       } catch (error) {

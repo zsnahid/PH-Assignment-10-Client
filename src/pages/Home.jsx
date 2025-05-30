@@ -1,4 +1,4 @@
-import { CarouselWithContent } from "../components/Carousel";
+import CarouselWithContent from "../components/Carousel";
 import CategoryCards from "../components/CategoryCards";
 import FeaturedItems from "../components/FeaturedItems";
 import OfferSection from "../components/OfferSection";

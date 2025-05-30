@@ -1,65 +1,66 @@
 # Sportify: A Sports Equipment Store
 
-Sportify is a responsive and feature-rich sports equipment e-commerce platform. Designed to provide a seamless shopping experience, the website allows users to explore, purchase, and manage sports accessories across various categories. The platform is equipped with advanced functionalities like user authentication, private routes, and product management, ensuring both usability and security.
-
 ## Live Website
 
-Access the live website here: https://simple-firebase-49f36.web.app/
+[Visit Sportify Live](https://simple-firebase-49f36.web.app/)
 
-Access the server here: https://ph-assignment-10-server-rosy.vercel.app/
+## Overview
 
-## Features
+Sportify is a modern, full-stack e-commerce platform for discovering, buying, and managing sports equipment. The project demonstrates advanced React, Node.js, and MongoDB skills, with a focus on user experience, performance, and scalable architecture. It features authentication, product management, dynamic navigation, and a responsive, accessible UI. This project highlights my ability to build robust, production-ready web applications using industry best practices.
 
-- **Responsive Design**: Accessible on mobile, tablet, and desktop devices, ensuring an optimal user experience across all screen sizes.
-- **User Authentication**: Secure login and registration with support for email and social authentication (Google). Conditional rendering of navigation options based on user login status.
-- **Dynamic Navigation**:
-  - Home
-  - All Sports Equipment
-  - Add Equipment (Private Route)
-  - My Equipment List (Private Route)
-  - Login/Logout options with profile hover details for logged-in users.
-- **Product Management**:
-  - Add new sports equipment via a private route.
-  - Update or delete user-added products with confirmation prompts.
-  - Sort equipment by price on the All Sports Equipment page.
-- **Enhanced User Interface**:
-  - Interactive banner/slider with meaningful content.
-  - Product and category sections with intuitive navigation.
-  - Private routes for personalized features like "My Equipment List" and "View Details".
-- **Theme Customization**: Toggle between dark and light modes on the homepage.
-- **Error Handling and Feedback**:
-  - Toast or SweetAlert notifications for errors and successes.
-  - Dedicated 404 page for non-existing routes.
-- **Loading States**: Loading spinner displayed while data is being fetched.
-- **Integration of Popular Libraries**:
-  - Lottie React for animations.
-  - React Tooltip for enhanced interactivity.
+## Key Features
 
-## Technologies Used
+- **Responsive Design:** Mobile-first, fully responsive layout
+- **User Authentication:** Secure login/registration (email & Google) with Firebase
+- **Product Management:** Add, update, delete, and sort equipment (CRUD)
+- **Dynamic Navigation:** Private/protected routes, conditional UI
+- **Category & Offer Sections:** Category cards, featured items, and special offers
+- **Blog & Reviews:** Blog system and customer review carousel
+- **Dashboard:** Profile management, analytics, and admin tools
+- **Theme Customization:** Dark/light mode toggle
+- **Performance:** Code splitting, lazy loading, and loading spinners
+- **Error Handling:** Toast/SweetAlert notifications, 404 page
+
+## Tech Stack
 
 **Front-End:**
 
-- **React.js**: For building the user interface.
-- **Material Tailwind**: For styling and responsive design.
-- **React Router**: For navigation and private routes.
+- React.js (with Context API)
+- Material Tailwind CSS
+- React Router v6
+- Recharts (data visualization)
 
 **Back-End:**
 
-- **Node.js & Express.js**: For API development.
-- **MongoDB**: As the database to store and manage product data.
+- Node.js & Express.js (REST API)
+- MongoDB (database)
 
 **Authentication:**
 
-- **Firebase**: For secure user authentication.
+- Firebase Auth
 
 **Deployment:**
 
-- **Client**: Deployed on Firebase.
-- **Server**: Deployed on Vercel.
+- Client: Firebase Hosting
+- Server: Vercel
 
-## GitHub Repositories
+## Local Setup
 
-- **Client-Side Code**: https://github.com/programming-hero-web-course2/b10-a10-client-side-zsnahid
-- **Server-Side Code**: https://github.com/programming-hero-web-course2/b10-a10-server-side-zsnahid
+1. **Clone the repositories:**
+   - Client: `git clone https://github.com/programming-hero-web-course2/b10-a10-client-side-zsnahid`
+   - Server: `git clone https://github.com/programming-hero-web-course2/b10-a10-server-side-zsnahid`
+2. **Install dependencies:**
+   - `cd ph-assignment-10-client && npm install`
+   - `cd ../ph-assignment-10-server && npm install`
+3. **Configure environment variables:**
+   - For Firebase and MongoDB, add your credentials as needed (see `.env.example` if provided)
+4. **Run the development servers:**
+   - Client: `npm run dev` (from `ph-assignment-10-client`)
+   - Server: `npm start` (from `ph-assignment-10-server`)
+5. **Access the app:**
+   - Client: [http://localhost:5173](http://localhost:5173)
+   - Server: [http://localhost:5000](http://localhost:5000)
 
-Explore Sportify and enjoy a seamless shopping experience for all your sports equipment needs!
+---
+
+Explore Sportify and see a demonstration of modern full-stack web development, UI/UX best practices, and scalable architecture.

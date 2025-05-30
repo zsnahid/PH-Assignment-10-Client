@@ -36,7 +36,9 @@ export default function StickyNavbar() {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        setOpenNav(false); // Close drawer after logging out
+      })
       .catch((error) => {
         console.error(error.message);
       });
@@ -44,6 +46,11 @@ export default function StickyNavbar() {
 
   const handleNavLinkClick = () => {
     setOpenNav(false); // Close drawer when clicking a route
+  };
+
+  const handleLoginClick = () => {
+    setOpenNav(false); // Close drawer when clicking login button
+    navigate("/login");
   };
 
   const navList = (
@@ -157,7 +164,7 @@ export default function StickyNavbar() {
                     onClick={handleLogOut}
                     className="flex items-center gap-2 text-gray-700 hover:text-red-600 dark:text-gray-200 dark:hover:text-red-400"
                   >
-                    Sign Out
+                    Log Out
                   </MenuItem>
                 </MenuList>
               </Menu>
@@ -167,9 +174,9 @@ export default function StickyNavbar() {
                 size="sm"
                 color="red"
                 className="hidden lg:inline-block"
-                onClick={() => navigate("/login")}
+                onClick={handleLoginClick}
               >
-                <span>Sign in</span>
+                <span>Log in</span>
               </Button>
             )}
           </div>
@@ -191,16 +198,27 @@ export default function StickyNavbar() {
         className="absolute left-0 right-0 top-full bg-white dark:bg-gray-900 shadow-lg z-10"
       >
         {navList}
-        {!user && (
+        {!user ? (
           <Button
-            variant="gradient"
+            variant="filled"
             size="sm"
             color="red"
             fullWidth
             className="mb-2"
-            onClick={() => navigate("/login")}
+            onClick={handleLoginClick}
           >
-            <span>Sign in</span>
+            <span>Log in</span>
+          </Button>
+        ) : (
+          <Button
+            variant="filled"
+            size="sm"
+            color="red"
+            fullWidth
+            className="mb-2"
+            onClick={handleLogOut}
+          >
+            <span>Log out</span>
           </Button>
         )}
       </Collapse>

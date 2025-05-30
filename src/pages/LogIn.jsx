@@ -1,6 +1,6 @@
 import { Button, Card, Input, Typography } from "@material-tailwind/react";
-import { useContext } from "react";
-import { FaEnvelope, FaGoogle, FaLock } from "react-icons/fa"; // Added icons
+import { useContext, useState } from "react"; // Added useState
+import { FaEnvelope, FaGoogle, FaLock, FaEye, FaEyeSlash } from "react-icons/fa"; // Added eye icons
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -11,6 +11,7 @@ export default function LogIn() {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const [showPassword, setShowPassword] = useState(false); // Add state for password visibility
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -41,6 +42,10 @@ export default function LogIn() {
         });
       })
       .catch((error) => console.error(error.message));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -91,16 +96,29 @@ export default function LogIn() {
               >
                 <FaLock /> Password
               </Typography>
-              <Input
-                type="password"
-                size="lg"
-                placeholder="********"
-                name="password"
-                className="!border-gray-300 focus:!border-red-500 rounded-md dark:text-gray-500"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-              />
+              <div className="relative">
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  size="lg"
+                  placeholder="********"
+                  name="password"
+                  className="!border-gray-300 focus:!border-red-500 rounded-md dark:text-gray-500"
+                  labelProps={{
+                    className: "before:content-none after:content-none",
+                  }}
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <FaEyeSlash className="h-5 w-5" />
+                  ) : (
+                    <FaEye className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
             </div>
           </div>
 

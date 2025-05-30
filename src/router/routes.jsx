@@ -1,32 +1,43 @@
+import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Root from "../Root";
-import DashboardOverview from "../components/DashboardOverview";
-import AddEquipment from "../pages/AddEquipment";
-import AllEquipments from "../pages/AllEquipments";
-import AllProducts from "../pages/AllProducts";
-import Blog from "../pages/Blog";
-import BlogDetail from "../pages/BlogDetail";
-import CategoryProducts from "../pages/CategoryProducts";
-import Dashboard from "../pages/Dashboard";
-import Details from "../pages/Details";
-import ErrorPage from "../pages/ErrorPage";
-import Home from "../pages/Home";
-import LogIn from "../pages/LogIn";
-import OfferProducts from "../pages/OfferProducts";
-import Profile from "../pages/Profile";
-import { SimpleRegistrationForm } from "../pages/Register";
-import Update from "../pages/Update";
+import LoadingSpinner from "../components/LoadingSpinner";
 import PrivateRoutes from "./PrivateRoutes";
+import {
+  LazyRoot,
+  LazyDashboardOverview,
+  LazyAddEquipment,
+  LazyAllEquipments,
+  LazyAllProducts,
+  LazyBlog,
+  LazyBlogDetail,
+  LazyCategoryProducts,
+  LazyDashboard,
+  LazyDetails,
+  LazyErrorPage,
+  LazyHome,
+  LazyLogIn,
+  LazyOfferProducts,
+  LazyProfile,
+  LazyRegister,
+  LazyUpdate,
+} from "../utils/lazyComponents";
+import { SimpleRegistrationForm } from "../pages/Register";
+
+const withSuspense = (Component) => (
+  <Suspense fallback={<LoadingSpinner />}>
+    {Component}
+  </Suspense>
+);
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
+    element: withSuspense(<LazyRoot />),
+    errorElement: withSuspense(<LazyErrorPage />),
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: withSuspense(<LazyHome />),
         loader: () =>
           fetch(
             "https://ph-assignment-10-server-rosy.vercel.app/equipments-for-home"
@@ -34,41 +45,41 @@ export const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <AllProducts />,
+        element: withSuspense(<LazyAllProducts />),
         loader: () =>
           fetch("https://ph-assignment-10-server-rosy.vercel.app/equipments"),
       },
       {
         path: "/category/:category",
-        element: <CategoryProducts />,
+        element: withSuspense(<LazyCategoryProducts />),
       },
       {
         path: "/offers",
-        element: <OfferProducts />,
+        element: withSuspense(<LazyOfferProducts />),
       },
       {
         path: "/dashboard",
-        element: (
+        element: withSuspense(
           <PrivateRoutes>
-            <Dashboard />
+            <LazyDashboard />
           </PrivateRoutes>
         ),
         children: [
           {
             path: "",
-            element: <DashboardOverview />,
+            element: withSuspense(<LazyDashboardOverview />),
           },
           {
             path: "profile",
-            element: <Profile />,
+            element: withSuspense(<LazyProfile />),
           },
           {
             path: "add-equipment",
-            element: <AddEquipment />,
+            element: withSuspense(<LazyAddEquipment />),
           },
           {
             path: "all-equipments",
-            element: <AllEquipments />,
+            element: withSuspense(<LazyAllEquipments />),
             loader: () =>
               fetch(
                 "https://ph-assignment-10-server-rosy.vercel.app/equipments"
@@ -78,7 +89,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <Details />,
+        element: withSuspense(<LazyDetails />),
         loader: ({ params }) =>
           fetch(
             `https://ph-assignment-10-server-rosy.vercel.app/equipments/${params.id}`
@@ -86,9 +97,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: (
+        element: withSuspense(
           <PrivateRoutes>
-            <Update />
+            <LazyUpdate />
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
@@ -98,19 +109,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LogIn />,
+        element: withSuspense(<LazyLogIn />),
       },
       {
         path: "/register",
-        element: <SimpleRegistrationForm />,
+        element: <SimpleRegistrationForm/>,
       },
       {
         path: "/blog",
-        element: <Blog />,
+        element: withSuspense(<LazyBlog />),
       },
       {
         path: "/blog/:id",
-        element: <BlogDetail />,
+        element: withSuspense(<LazyBlogDetail />),
       },
     ],
   },
