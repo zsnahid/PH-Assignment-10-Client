@@ -6,17 +6,8 @@
 
 ## Overview
 
-Sportify is a comprehensive, full-stack e-commerce platform designed for sports equipment enthusiasts. This project showcases advanced web development skills including React performance optimization, data visualization, modern UI/UX patterns, and production-ready architecture.
+Sportify is a comprehensive, full-stack e-commerce platform designed for sports equipment enthusiasts. Users can browse, search and sort their desired products. Admins can add, update and delete products easily.
 
-**What makes this project stand out:**
-
-- **Performance-Optimized**: Implements lazy loading, code splitting, and efficient state management
-- **Data-Driven**: Features interactive charts and analytics using Recharts library
-- **User-Centric**: Complete user profile management with edit capabilities
-- **Scalable Architecture**: Modular component structure with proper separation of concerns
-- **Professional UI/UX**: Modern Material Tailwind design with responsive layouts
-
-This application demonstrates my ability to build enterprise-level web applications that prioritize performance, user experience, and maintainable code structure.
 
 ## Screenshots
 
