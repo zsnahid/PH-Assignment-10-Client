@@ -8,6 +8,23 @@
 
 Sportify is a modern, full-stack e-commerce platform for discovering, buying, and managing sports equipment. The project demonstrates advanced React, Node.js, and MongoDB skills, with a focus on user experience, performance, and scalable architecture. It features authentication, product management, dynamic navigation, and a responsive, accessible UI. This project highlights my ability to build robust, production-ready web applications using industry best practices.
 
+## Screenshots
+
+<div align="center">
+
+<table>
+  <tr>
+    <td><img src="src/assets/readme/Screenshot from 2025-05-30 11-48-13.png" alt="Home Page" width="350"/></td>
+    <td><img src="src/assets/readme/Screenshot from 2025-05-30 11-48-16.png" alt="Product List" width="350"/></td>
+  </tr>
+  <tr>
+    <td><img src="src/assets/readme/Screenshot from 2025-05-30 11-48-41.png" alt="Dashboard" width="350"/></td>
+    <td><img src="src/assets/readme/Screenshot from 2025-05-30 11-48-54.png" alt="Profile Page" width="350"/></td>
+  </tr>
+</table>
+
+</div>
+
 ## Key Features
 
 - **Responsive Design:** Mobile-first, fully responsive layout
